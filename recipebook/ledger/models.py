@@ -5,7 +5,7 @@ class Ingredient(models.Model):
     name = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return f"{self.name}"
     
     def get_absolute_url(self):
         return reverse('ledger:ingredient_detail', args=[str(self.id)])
@@ -24,7 +24,7 @@ class Recipe(models.Model):
         verbose_name_plural = 'recipes'
     
 class RecipeIngredient(models.Model):
-    quantity = models.CharField(max_length=5)
+    quantity = models.CharField(max_length=50)
     ingredient = models.ForeignKey(
         Ingredient, 
         on_delete=models.CASCADE,

@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 # Create your models here.
 class Ingredient(models.Model):
@@ -24,10 +25,10 @@ class RecipeIngredient(models.Model):
     ingredient = models.ForeignKey(
         Ingredient, 
         on_delete=models.CASCADE,
-        related_name='ingredients'
+        related_name='recipe'
         )
     recipe = models.ForeignKey(
         Recipe,
         on_delete=models.CASCADE,
-        related_name='recipes'
+        related_name='ingredients'
         )

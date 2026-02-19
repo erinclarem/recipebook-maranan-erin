@@ -1,5 +1,9 @@
 from django.shortcuts import render
 from django.http import HttpResponse
+from .models import Ingredient, Recipe, RecipeIngredient
+from django.views.generic.detail import DetailView
+from django.views.generic.list import ListView
+
 
 def recipes_list(request):
     ctx = {
@@ -133,3 +137,11 @@ def recipe2(request):
         "link": "/recipe/2"
     }
     return render(request, 'recipe.html', ctx)
+
+class RecipeListView(ListView):
+    model = Recipe
+    template_name = 'recipes_list.html'
+
+class RecipeDetailView(DetailView):
+    model = Recipe
+    template_name = 'recipe.html'

@@ -3,15 +3,19 @@
         <title>Ledger</title>
     </head>
     <body>
-        {% if request.user.is_authenticated %}
-            <form method="POST" action="{% url 'logout' %}">
-                {% csrf_token %}
-                <button type="submit">Logout</button>
-            </form>
-        {% else %}
-            <a href="{% url 'login' %}">Login</a>
-        {% endif %}
-        <h1 style="text-align: center;">Recipe Book</h1>  
+        <header>
+            <nav>
+                <h1 style="text-align: center;">Recipe Book</h1>
+                {% if request.user.is_authenticated %}
+                <form method="POST" action="{% url 'logout' %}">
+                    {% csrf_token %}
+                    <button type="submit">Logout</button>
+                </form>
+                {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                {% endif %}
+            </nav>
+        </header>  
         {% block content %}
         {% endblock %}
     </body>

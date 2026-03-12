@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import RecipeListView, RecipeDetailView
-from .views import RecipeCreateView, RecipeImageCreateView
+from .views import RecipeCreateView, RecipeImageUploadView
 
 urlpatterns = [
     path('recipes/list', RecipeListView.as_view(), name='recipes_list'),
@@ -8,8 +8,8 @@ urlpatterns = [
     path('recipe/add', RecipeCreateView.as_view(), name='recipe_create'),
     path(
         'recipe/<int:pk>/add_image',
-        RecipeImageCreateView.as_view(),
-        name='recipe_image_create'
+        RecipeImageUploadView.as_view(),
+        name='recipe_image_upload'
     ),
 ]
 

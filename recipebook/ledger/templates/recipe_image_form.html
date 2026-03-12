@@ -10,4 +10,5 @@
         {{ form }}
         <input type="submit" name="submit" value="Save Form">
     </form>
+    <h4><a href="{{ recipe.get_absolute_url }}">Back to {{ recipe.name }}</a></h4>
 {% endblock %}

@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block page_heading %}
-    Add an Image to {{ recipe.name }}
+    Add an Image to {{ recipe }} Recipe
 {% endblock %}
 
 {% block content %}
@@ -10,5 +10,5 @@
         {{ form }}
         <input type="submit" name="submit" value="Save Form">
     </form>
-    <h4><a href="{{ recipe.get_absolute_url }}">Back to {{ recipe.name }}</a></h4>
+    <h4><a href="{{ recipe.get_absolute_url }}">Back to {{ recipe }} Recipe</a></h4>
 {% endblock %}

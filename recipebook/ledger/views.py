@@ -36,11 +36,14 @@ class RecipeImageUploadView(LoginRequiredMixin, CreateView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['pk'] = self.kwargs['pk']
+        context['recipe'] = get_object_or_404(Recipe, pk=self.kwargs['pk'])
         return context
 
     def get_success_url(self):
-        return reverse_lazy('ledger:recipe_detail', kwargs={'pk': self.kwargs['pk']})
+        return reverse_lazy(
+            'ledger:recipe_detail',
+            kwargs={'pk': self.kwargs['pk']}
+        )
 
     def post(self, request, *args, **kwargs):
         form = RecipeImageForm(request.POST, request.FILES)

@@ -15,6 +15,11 @@ class RecipeDetailView(LoginRequiredMixin, DetailView):
     model = Recipe
     template_name = 'recipe.html'
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['images'] = RecipeImage.objects.filter(recipe=self.object)
+        return context
+
 
 class RecipeCreateView(LoginRequiredMixin, CreateView):
     model = Recipe
@@ -26,3 +31,8 @@ class RecipeImageCreateView(LoginRequiredMixin, CreateView):
     model = RecipeImage
     form_class = RecipeImageForm
     template_name = 'recipe_image_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['recipe'] = Recipe.objects.get(pk=self.kwargs['pk'])
+        return context
